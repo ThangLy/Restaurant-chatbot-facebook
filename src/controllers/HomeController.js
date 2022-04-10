@@ -1,5 +1,6 @@
 require('dotenv').config();
 import request from "request";
+import chatbotService from "../services/chatbotService";
 
 const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN;
 
@@ -119,7 +120,7 @@ function handleMessage(sender_psid, received_message) {
 }
 
 // Handles messaging_postbacks events
-function handlePostback(sender_psid, received_postback) {
+async function handlePostback(sender_psid, received_postback) {
   let response;
 
   // Get the payload for the postback
@@ -134,11 +135,12 @@ function handlePostback(sender_psid, received_postback) {
       response = { "text": "Oops, try sending another image." }
       break;
     case 'GET_STARTED':
+      await chatbotService
       response = { "text": "OK, Xin chào mừng bạn ABC đến với 1 con bot sắp thông minh." }
       break;
     default:
       // code block
-      response = { "text": `oops! idk response with postback ${payload}` }
+      response = { "text": `Oops! idk response with postback ${payload}` }
   }
 
   // Send the message to acknowledge the postback
@@ -157,7 +159,7 @@ function callSendAPI(sender_psid, response) {
 
   // Send the HTTP request to the Messenger Platform
   request({
-    "uri": "https://graph.facebook.com/v2.6/me/messages",
+    "uri": "https://graph.facebook.com/v13.0/me/messages",
     "qs": { "access_token": process.env.PAGE_ACCESS_TOKEN },
     "method": "POST",
     "json": request_body
