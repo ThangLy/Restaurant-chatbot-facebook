@@ -206,7 +206,6 @@ let setupProfile = async (req, res) => {
   return res.send('Setup user profile succeeds!');
 
 }
-
 let setupPersistentMenu = async (req, res) => {
   //Call profile facebook api
   // Construct the message body
@@ -258,6 +257,7 @@ let setupPersistentMenu = async (req, res) => {
 
   return res.send('Setup persistent menu succeeds!');
 }
+
 
 module.exports = {
   getHomePage: getHomePage,
