@@ -55,8 +55,37 @@ let handleGetStarted = (sender_psid) => {
             let response1 = { "text": `Xin chào mừng bạn ${username} đến với 1 con bot sắp thông minh.` }
 
             let response2 = sendGetStartedTemplate();
-            let response3 = { "text": "------------------" }
 
+            let response3 = {
+                "attachment": {
+                    "type": "template",
+                    "payload": {
+                        "template_type": "generic",
+                        "elements": [{
+                            "title": "Bạn với Bot xem ai thông minh hơn?",
+                            "subtitle": "lựa chọn cho đi bot sẽ trả lời bạn.",
+                            "image_url": IMAGE_GET_STARTED,
+                            "buttons": [
+                                {
+                                    "type": "postback",
+                                    "title": "Tôi thông minh hơn bạn!",
+                                    "payload": "Dung_Vay",
+                                },
+                                {
+                                    "type": "postback",
+                                    "title": "Bạn thông minh thua tôi!",
+                                    "payload": "Chuan_Luon",
+                                },
+                                {
+                                    "type": "postback",
+                                    "title": "Hưỡng dẫn sử dụng bot",
+                                    "payload": "Guide_To-Use",
+                                }
+                            ],
+                        }]
+                    }
+                }
+            }
             //send text message
             await callSendAPI(sender_psid, response1);
 
