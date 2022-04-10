@@ -140,7 +140,7 @@ async function handlePostback(sender_psid, received_postback) {
       await chatbotService.handleGetStarted(sender_psid);
       break;
 
-    case "MAIN_IDEA":
+    case "MAIN_MENU":
       await chatbotService.handleSendMainIdea(sender_psid);
       break;
     default:
