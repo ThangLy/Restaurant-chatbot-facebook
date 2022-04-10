@@ -103,7 +103,7 @@ let getStartedTemplate = () => {
     return response;
 }
 
-let handleSendMainIdea = () => {
+let handleSendMainIdea = (sender_psid) => {
     return new Promise(async (resolve, reject) => {
         try {
             let response = getMainIdeaTemplate();
