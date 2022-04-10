@@ -173,7 +173,7 @@ let getMainMenuTemplate = () => {
     return response;
 }
 
-let handleSendLunchMenu = () => {
+let handleSendLunchMenu = (sender_psid) => {
     return new Promise(async (resolve, reject) => {
         try {
             let response = getMainLunchTemplate();
@@ -240,7 +240,7 @@ let getMainLunchTemplate = () => {
 
 }
 
-let handleSendDinnerMenu = () => {
+let handleSendDinnerMenu = (sender_psid) => {
     return new Promise(async (resolve, reject) => {
         try {
             let response = getMainDinnerTemplate();
