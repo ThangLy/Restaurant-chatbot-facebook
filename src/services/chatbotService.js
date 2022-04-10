@@ -106,13 +106,10 @@ let getStartedTemplate = () => {
 let handleSendMainIdea = () => {
     return new Promise(async (resolve, reject) => {
         try {
-            let response2 = getMainIdeaTemplate();
-
-            //send text message
-            await callSendAPI(sender_psid, response1);
+            let response = getMainIdeaTemplate();
 
             //send generic template message
-            await callSendAPI(sender_psid, response2);
+            await callSendAPI(sender_psid, response);
 
             resolve('done');
         } catch (e) {
