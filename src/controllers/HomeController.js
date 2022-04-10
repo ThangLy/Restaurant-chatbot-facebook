@@ -141,8 +141,21 @@ async function handlePostback(sender_psid, received_postback) {
       break;
 
     case "MAIN_MENU":
-      await chatbotService.handleSendMainIdea(sender_psid);
+      await chatbotService.handleSendMainMenu(sender_psid);
       break;
+
+    case 'LUNCH_MENU':
+      await chatbotService.handleSendLunchMenu(sender_psid);
+      break;
+
+    case 'DINNER_MENU':
+      await chatbotService.handleSendDinnerMenu(sender_psid);
+      break;
+
+    case 'VIEW_APPETIZERS':
+    case 'VIEW_LAU':
+    case 'VIEW_BEER':
+
     default:
       // code block
       response = { "text": `Oops! idk response with postback ${payload}` }
@@ -247,7 +260,6 @@ let setupPersistentMenu = async (req, res) => {
     "method": "POST",
     "json": request_body
   }, (err, res, body) => {
-    console.log(body)
     if (!err) {
       console.log('Setup persistent menu succeeds!')
     } else {

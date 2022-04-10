@@ -103,10 +103,10 @@ let getStartedTemplate = () => {
     return response;
 }
 
-let handleSendMainIdea = (sender_psid) => {
+let handleSendMainMenu = (sender_psid) => {
     return new Promise(async (resolve, reject) => {
         try {
-            let response = getMainIdeaTemplate();
+            let response = getMainMenuTemplate();
 
             //send generic template message
             await callSendAPI(sender_psid, response);
@@ -118,7 +118,7 @@ let handleSendMainIdea = (sender_psid) => {
     })
 }
 
-let getMainIdeaTemplate = () => {
+let getMainMenuTemplate = () => {
     let response = {
         "attachment": {
             "type": "template",
@@ -173,7 +173,125 @@ let getMainIdeaTemplate = () => {
     return response;
 }
 
+let handleSendLunchMenu = () => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            let response = getMainLunchTemplate();
+
+            //send generic template message
+            await callSendAPI(sender_psid, response);
+
+            resolve('done');
+        } catch (e) {
+            reject(e);
+        }
+    })
+}
+
+let getMainLunchTemplate = () => {
+    let response = {
+        "attachment": {
+            "type": "template",
+            "payload": {
+                "template_type": "generic",
+                "elements": [
+                    {
+                        "title": "Món tráng miệng",
+                        "subtitle": "Có nhiều món tráng miệng hấp dẫn",
+                        "image_url": IMAGE_GET_STARTED,
+                        "buttons": [
+                            {
+                                "type": "postback",
+                                "title": "Xem Chi Tiết",
+                                "payload": "VIEW_APPETIZERS",
+                            }
+                        ],
+                    },
+                    {
+                        "title": "Lẩu",
+                        "subtitle": "Nhiều loại lẩu",
+                        "image_url": IMAGE_GET_STARTED,
+                        "buttons": [
+                            {
+                                "type": "postback",
+                                "title": "Xem chi tiết",
+                                "payload": "VIEW_LAU",
+                            }
+                        ],
+                    },
+                    {
+                        "title": "Bia",
+                        "subtitle": "Awesome =))",
+                        "image_url": IMAGE_GET_STARTED,
+                        "buttons": [
+                            {
+                                "type": "postback",
+                                "title": "Xem Chi Tiết",
+                                "payload": "View_BEER",
+                            }
+                        ],
+                    }
+                ]
+            }
+        }
+    }
+
+    return response;
+
+}
+
+let handleSendDinnerMenu = () => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            let response = getMainDinnerTemplate();
+
+            //send generic template message
+            await callSendAPI(sender_psid, response);
+
+            resolve('done');
+        } catch (e) {
+            reject(e);
+        }
+    })
+}
+
+let getMainDinnerTemplate = () => {
+    let response = {
+        "attachment": {
+            "type": "template",
+            "payload": {
+                "template_type": "generic",
+                "elements": [{
+                    "title": "Lẩu Thuận Phát kính chào quý khách",
+                    "subtitle": "Dưới đây là các lựa chọn của nhà hàng",
+                    "image_url": IMAGE_GET_STARTED,
+                    "buttons": [
+                        {
+                            "type": "postback",
+                            "title": "Menu",
+                            "payload": "MAIN_MENU",
+                        },
+                        {
+                            "type": "postback",
+                            "title": "Đặt Bàn",
+                            "payload": "RESERVE_TABLE",
+                        },
+                        {
+                            "type": "postback",
+                            "title": "Hướng dẫn sử dụng bot",
+                            "payload": "GUIDE_TO-USE",
+                        }
+                    ],
+                }]
+            }
+        }
+    }
+    return response;
+}
+
 module.exports = {
     handleGetStarted: handleGetStarted,
-    handleSendMainIdea: handleSendMainIdea
+    handleSendMainMenu: handleSendMainMenu,
+    handleSendLunchMenu: handleSendLunchMenu,
+    handleSendDinnerMenu: handleSendDinnerMenu,
 }
