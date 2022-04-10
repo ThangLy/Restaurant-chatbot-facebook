@@ -26,7 +26,7 @@ let callSendAPI = (sender_psid, res) => {
     });
 }
 let handleGetStarted = () => {
-    return Promise(async (resolve, reject) => {
+    return new Promise(async (resolve, reject) => {
         try {
             let response = { "text": "OK, Xin chào mừng bạn ABC đến với 1 con bot sắp thông minh." }
             await this.callSendAPI(sender_psid, response);
