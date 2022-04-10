@@ -55,12 +55,13 @@ let handleGetStarted = (sender_psid) => {
             let response1 = { "text": `Xin chào mừng bạn ${username} đến với 1 con bot sắp thông minh.` }
 
             let response2 = sendGetStartedTemplate();
+            let response3 = { "text": "------------------" }
 
             //send text message
             await callSendAPI(sender_psid, response1);
 
             //send generic template message
-            await callSendAPI(sender_psid, response2);
+            await callSendAPI(sender_psid, response3);
 
             resolve('done');
         } catch (e) {
