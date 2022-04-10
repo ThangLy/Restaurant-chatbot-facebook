@@ -230,7 +230,7 @@ let setupPersistentMenu = async (req, res) => {
           },
           {
             "type": "web_url",
-            "title": "1 trang web nguy hiểm",
+            "title": "đây là trang web nguy hiểm",
             "url": "https://www.facebook.com/1-con-bot-sap-thong-minh-105770492106718",
             "webview_height_ratio": "full"
           }
