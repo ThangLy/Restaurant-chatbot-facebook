@@ -92,7 +92,7 @@ let getStartedTemplate = () => {
                         },
                         {
                             "type": "postback",
-                            "title": "Hưỡng dẫn sử dụng bot",
+                            "title": "Hướng dẫn sử dụng bot",
                             "payload": "GUIDE_TO-USE",
                         }
                     ],
