@@ -52,9 +52,9 @@ let handleGetStarted = (sender_psid) => {
     return new Promise(async (resolve, reject) => {
         try {
             let username = await getUserName(sender_psid);
-            let response1 = { "text": `Xin chào mừng bạn ${username} đến với 1 con bot sắp thông minh.` }
+            let response1 = { "text": `Xin chào mừng bạn ${username} đến với lẩu Thuận Phát.` }
 
-            let response2 = sendGetStartedTemplate();
+            let response2 = getStartedTemplate();
 
             //send text message
             await callSendAPI(sender_psid, response1);
@@ -69,31 +69,31 @@ let handleGetStarted = (sender_psid) => {
     })
 }
 
-let sendGetStartedTemplate = () => {
+let getStartedTemplate = () => {
     let response = {
         "attachment": {
             "type": "template",
             "payload": {
                 "template_type": "generic",
                 "elements": [{
-                    "title": "Bạn với Bot xem ai thông minh hơn?",
-                    "subtitle": "lựa chọn cho đi bot sẽ trả lời bạn.",
+                    "title": "Lẩu Thuận phát kính chào quý khách",
+                    "subtitle": "Dưới đây là các lựa chọn của nhà hàng",
                     "image_url": IMAGE_GET_STARTED,
                     "buttons": [
                         {
                             "type": "postback",
-                            "title": "Tôi thông minh hơn bạn!",
-                            "payload": "Dung_Vay",
+                            "title": "Menu",
+                            "payload": "MAIN_MENU",
                         },
                         {
                             "type": "postback",
-                            "title": "Bạn thông minh thua tôi!",
-                            "payload": "Chuan_Luon",
+                            "title": "Đặt Bàn",
+                            "payload": "RESERVE_TABLE",
                         },
                         {
                             "type": "postback",
                             "title": "Hưỡng dẫn sử dụng bot",
-                            "payload": "Guide_To-Use",
+                            "payload": "GUIDE_TO-USE",
                         }
                     ],
                 }]
@@ -103,6 +103,80 @@ let sendGetStartedTemplate = () => {
     return response;
 }
 
+let handleSendMainIdea = () => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            let response2 = getMainIdeaTemplate();
+
+            //send text message
+            await callSendAPI(sender_psid, response1);
+
+            //send generic template message
+            await callSendAPI(sender_psid, response2);
+
+            resolve('done');
+        } catch (e) {
+            reject(e);
+        }
+    })
+}
+
+let getMainIdeaTemplate = () => {
+    let response = {
+        "attachment": {
+            "type": "template",
+            "payload": {
+                "template_type": "generic",
+                "elements": [
+                    {
+                        "title": "Menu của nhà hàng",
+                        "subtitle": "Chúng tôi mang đến cho bạn thực đơn phong phú cho bữa trưa hoặc bữa tối",
+                        "image_url": IMAGE_GET_STARTED,
+                        "buttons": [
+                            {
+                                "type": "postback",
+                                "title": "Bữa Trưa",
+                                "payload": "LUNCH_MENU",
+                            },
+                            {
+                                "type": "postback",
+                                "title": "Bữa Tối",
+                                "payload": "DINNER_MENU",
+                            }
+                        ],
+                    },
+                    {
+                        "title": "Giờ mở cửa",
+                        "subtitle": "Thứ 2 đến chủ nhật hàng tuần | 10AM - 10PM",
+                        "image_url": IMAGE_GET_STARTED,
+                        "buttons": [
+                            {
+                                "type": "postback",
+                                "title": "Đặt Bàn",
+                                "payload": "RESERVE_TABLE",
+                            }
+                        ],
+                    },
+                    {
+                        "title": "Không gian của lẩu Thuận Phát",
+                        "subtitle": "Phục vụ cho mọi buổi nhậu của các bạn =))",
+                        "image_url": IMAGE_GET_STARTED,
+                        "buttons": [
+                            {
+                                "type": "postback",
+                                "title": "Phòng để nhậu",
+                                "payload": "SHOW_ROOM",
+                            }
+                        ],
+                    }
+                ]
+            }
+        }
+    }
+    return response;
+}
+
 module.exports = {
-    handleGetStarted: handleGetStarted
+    handleGetStarted: handleGetStarted,
+    handleSendMainIdea: handleSendMainIdea
 }

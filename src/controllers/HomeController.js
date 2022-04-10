@@ -139,6 +139,10 @@ async function handlePostback(sender_psid, received_postback) {
     case 'GET_STARTED':
       await chatbotService.handleGetStarted(sender_psid);
       break;
+
+    case "MAIN_IDEA":
+      await chatbotService.handleSendMainIdea(sender_psid);
+      break;
     default:
       // code block
       response = { "text": `Oops! idk response with postback ${payload}` }
@@ -226,8 +230,8 @@ let setupPersistentMenu = async (req, res) => {
           },
           {
             "type": "web_url",
-            "title": "chưa phát triển",
-            "url": "https://www.originalcoastclothing.com/",
+            "title": "1 trang web nguy hiểm",
+            "url": "https://www.facebook.com/1-con-bot-sap-thong-minh-105770492106718",
             "webview_height_ratio": "full"
           }
         ]
