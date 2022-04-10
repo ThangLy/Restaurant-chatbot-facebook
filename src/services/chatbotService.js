@@ -76,7 +76,7 @@ let getStartedTemplate = () => {
             "payload": {
                 "template_type": "generic",
                 "elements": [{
-                    "title": "Lẩu Thuận phát kính chào quý khách",
+                    "title": "Lẩu Thuận Phát kính chào quý khách",
                     "subtitle": "Dưới đây là các lựa chọn của nhà hàng",
                     "image_url": IMAGE_GET_STARTED,
                     "buttons": [

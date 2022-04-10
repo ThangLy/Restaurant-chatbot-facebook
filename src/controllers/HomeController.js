@@ -225,7 +225,7 @@ let setupPersistentMenu = async (req, res) => {
           },
           {
             "type": "postback",
-            "title": "Hông biết làm gì",
+            "title": "Sao ban khong thay doi",
             "payload": "CURATION"
           },
           {
