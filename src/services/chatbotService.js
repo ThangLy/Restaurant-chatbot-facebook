@@ -576,6 +576,7 @@ let getImageRoomsTemplate = () => {
             }
         }
     }
+    return response;
 }
 
 let getButtonRoomTemplate = () => {
@@ -600,6 +601,7 @@ let getButtonRoomTemplate = () => {
             }
         }
     }
+    return response;
 }
 
 let handleShowDetailRooms = async (sender_psid) => {

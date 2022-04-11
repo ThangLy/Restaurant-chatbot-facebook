@@ -169,7 +169,6 @@ async function handlePostback(sender_psid, received_postback) {
       break;
 
     case 'SHOW_ROOMS':
-      console.log("chajy ddi m ");
       await chatbotService.handleShowDetailRooms(sender_psid);
       break;
     default:
