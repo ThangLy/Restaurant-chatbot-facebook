@@ -196,7 +196,7 @@ let getMainLunchTemplate = () => {
                 "template_type": "generic",
                 "elements": [
                     {
-                        "title": "Món tráng miệng",
+                        "title": "Món Khai Vị",
                         "subtitle": "Có nhiều món tráng miệng hấp dẫn",
                         "image_url": IMAGE_GET_STARTED,
                         "buttons": [
@@ -228,6 +228,18 @@ let getMainLunchTemplate = () => {
                                 "type": "postback",
                                 "title": "Xem Chi Tiết",
                                 "payload": "View_BEER",
+                            }
+                        ],
+                    },
+                    {
+                        "title": "Quay trở lại",
+                        "subtitle": "Quay trở lại Menu",
+                        "image_url": IMAGE_GET_STARTED,
+                        "buttons": [
+                            {
+                                "type": "postback",
+                                "title": "QUAY TRỞ LẠI",
+                                "payload": "BACK_TO_MENU",
                             }
                         ],
                     }
@@ -289,9 +301,197 @@ let getMainDinnerTemplate = () => {
     return response;
 }
 
+let handleBackToMenu = async (sender_psid) => {
+    await handleSendMainMenu(sender_psid);
+}
+
+let handleDetailViewAppetizers = async (sender_psid) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            let response = getDetailViewAppetizersTemplate();
+
+            //send generic template message
+            await callSendAPI(sender_psid, response);
+
+            resolve('done');
+        } catch (e) {
+            reject(e);
+        }
+    })
+}
+
+let getDetailViewAppetizersTemplate = () => {
+    let response = {
+        "attachment": {
+            "type": "template",
+            "payload": {
+                "template_type": "generic",
+                "elements": [
+                    {
+                        "title": "Đậu hũ lướt ván",
+                        "subtitle": "Thơm ngon mời bạn ăn nha - 40.000/p",
+                        "image_url": IMAGE_GET_STARTED,
+                    },
+
+                    {
+                        "title": "Gỏi ngó sen",
+                        "subtitle": "Thơm ngon mời bạn ăn nha - 120.000/p",
+                        "image_url": IMAGE_GET_STARTED,
+
+                    },
+                    {
+                        "title": "Súp bào ngư vi cá hảo hạng",
+                        "subtitle": "Awesome =)) - 240.000/p",
+                        "image_url": IMAGE_GET_STARTED,
+                    },
+                    {
+                        "title": "Quay trở lại",
+                        "subtitle": "Quay trở lại Menu",
+                        "image_url": IMAGE_GET_STARTED,
+                        "buttons": [
+                            {
+                                "type": "postback",
+                                "title": "QUAY TRỞ LẠI",
+                                "payload": "BACK_TO_MENU",
+                            }
+                        ],
+                    }
+                ]
+            }
+        }
+    }
+
+    return response;
+
+}
+
+let getDetailViewLAUTemplate = () => {
+    let response = {
+        "attachment": {
+            "type": "template",
+            "payload": {
+                "template_type": "generic",
+                "elements": [
+                    {
+                        "title": "Lẩu cá",
+                        "subtitle": "Thơm ngon mời bạn ăn nha - 240.000/p",
+                        "image_url": IMAGE_GET_STARTED,
+                    },
+
+                    {
+                        "title": "Lẩu thái",
+                        "subtitle": "Thơm ngon mời bạn ăn nha - 220.000/p",
+                        "image_url": IMAGE_GET_STARTED,
+
+                    },
+                    {
+                        "title": "Lẩu bò",
+                        "subtitle": "Awesome =)) - 260.000/p",
+                        "image_url": IMAGE_GET_STARTED,
+                    },
+                    {
+                        "title": "Quay trở lại",
+                        "subtitle": "Quay trở lại Menu",
+                        "image_url": IMAGE_GET_STARTED,
+                        "buttons": [
+                            {
+                                "type": "postback",
+                                "title": "QUAY TRỞ LẠI",
+                                "payload": "BACK_TO_MENU",
+                            }
+                        ],
+                    }
+                ]
+            }
+        }
+    }
+
+    return response;
+
+}
+
+let getDetailViewBeerTemplate = () => {
+    let response = {
+        "attachment": {
+            "type": "template",
+            "payload": {
+                "template_type": "generic",
+                "elements": [
+                    {
+                        "title": "Tiger",
+                        "subtitle": "340.000/p",
+                        "image_url": IMAGE_GET_STARTED,
+                    },
+
+                    {
+                        "title": "Sài gòn lager",
+                        "subtitle": "320.000/p",
+                        "image_url": IMAGE_GET_STARTED,
+
+                    },
+                    {
+                        "title": "Heniken",
+                        "subtitle": "380.000/p",
+                        "image_url": IMAGE_GET_STARTED,
+                    },
+                    {
+                        "title": "Quay trở lại",
+                        "subtitle": "Quay trở lại Menu",
+                        "image_url": IMAGE_GET_STARTED,
+                        "buttons": [
+                            {
+                                "type": "postback",
+                                "title": "QUAY TRỞ LẠI",
+                                "payload": "BACK_TO_MENU",
+                            }
+                        ],
+                    }
+                ]
+            }
+        }
+    }
+
+    return response;
+
+}
+
+let handleDetailViewLAU = async (sender_psid) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            let response = getDetailViewLAUTemplate();
+
+            //send generic template message
+            await callSendAPI(sender_psid, response);
+
+            resolve('done');
+        } catch (e) {
+            reject(e);
+        }
+    })
+}
+
+let handleDetailViewBeer = async (sender_psid) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            let response = getDetailViewBeerTemplate();
+
+            //send generic template message
+            await callSendAPI(sender_psid, response);
+
+            resolve('done');
+        } catch (e) {
+            reject(e);
+        }
+    })
+}
+
 module.exports = {
     handleGetStarted: handleGetStarted,
     handleSendMainMenu: handleSendMainMenu,
     handleSendLunchMenu: handleSendLunchMenu,
     handleSendDinnerMenu: handleSendDinnerMenu,
+    handleBackToMenu: handleBackToMenu,
+    handleDetailViewAppetizers: handleDetailViewAppetizers,
+    handleDetailViewLAU: handleDetailViewLAU,
+    handleDetailViewBeer, handleDetailViewBeer,
 }
