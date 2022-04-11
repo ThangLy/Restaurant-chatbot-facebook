@@ -214,7 +214,7 @@ let getMainLunchTemplate = () => {
                         "buttons": [
                             {
                                 "type": "postback",
-                                "title": "Xem chi tiết",
+                                "title": "Xem Chi Tiết",
                                 "payload": "VIEW_LAU",
                             }
                         ],
@@ -419,19 +419,19 @@ let getDetailViewBeerTemplate = () => {
                 "elements": [
                     {
                         "title": "Tiger",
-                        "subtitle": "340.000/p",
+                        "subtitle": "Rượu bia không ép",
                         "image_url": IMAGE_GET_STARTED,
                     },
 
                     {
-                        "title": "Sài gòn lager",
-                        "subtitle": "320.000/p",
+                        "title": "Sài Gòn Lager",
+                        "subtitle": "Rượu bia không ép",
                         "image_url": IMAGE_GET_STARTED,
 
                     },
                     {
-                        "title": "Heniken",
-                        "subtitle": "380.000/p",
+                        "title": "Corona",
+                        "subtitle": "Awesome =))",
                         "image_url": IMAGE_GET_STARTED,
                     },
                     {
@@ -454,6 +454,7 @@ let getDetailViewBeerTemplate = () => {
     return response;
 
 }
+
 
 let handleDetailViewLAU = async (sender_psid) => {
     return new Promise(async (resolve, reject) => {
