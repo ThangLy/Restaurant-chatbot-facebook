@@ -155,16 +155,22 @@ async function handlePostback(sender_psid, received_postback) {
     case 'VIEW_APPETIZERS':
       await chatbotService.handleDetailViewAppetizers(sender_psid);
       break;
+
     case 'VIEW_LAU':
       await chatbotService.handleDetailViewLAU(sender_psid);
       break;
-    case 'VIEW_BEER':
+
+    case 'View_BEER':
       await chatbotService.handleDetailViewBeer(sender_psid);
       break;
+
     case 'BACK_TO_MENU':
       await chatbotService.handleBackToMenu(sender_psid);
       break;
 
+    case 'SHOW_ROOMS':
+      await chatbotService.handleShowDetailRooms(sender_psid);
+      break;
     default:
       // code block
       response = { "text": `Oops! idk response with postback ${payload}` }

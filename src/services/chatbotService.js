@@ -213,7 +213,7 @@ let getMainMenuTemplate = () => {
                             {
                                 "type": "postback",
                                 "title": "Phòng để nhậu",
-                                "payload": "SHOW_ROOM",
+                                "payload": "SHOW_ROOMS",
                             }
                         ],
                     }
@@ -324,31 +324,60 @@ let getMainDinnerTemplate = () => {
             "type": "template",
             "payload": {
                 "template_type": "generic",
-                "elements": [{
-                    "title": "Lẩu Thuận Phát kính chào quý khách",
-                    "subtitle": "Dưới đây là các lựa chọn của nhà hàng",
-                    "image_url": IMAGE_GET_STARTED,
-                    "buttons": [
-                        {
-                            "type": "postback",
-                            "title": "Menu",
-                            "payload": "MAIN_MENU",
-                        },
-                        {
-                            "type": "postback",
-                            "title": "Đặt Bàn",
-                            "payload": "RESERVE_TABLE",
-                        },
-                        {
-                            "type": "postback",
-                            "title": "Hướng dẫn sử dụng bot",
-                            "payload": "GUIDE_TO-USE",
-                        }
-                    ],
-                }]
+                "elements": [
+                    {
+                        "title": "Món Khai Vị",
+                        "subtitle": "Có nhiều món tráng miệng hấp dẫn",
+                        "image_url": IMAGE_GET_STARTED,
+                        "buttons": [
+                            {
+                                "type": "postback",
+                                "title": "Xem Chi Tiết",
+                                "payload": "VIEW_APPETIZERS",
+                            }
+                        ],
+                    },
+                    {
+                        "title": "Lẩu",
+                        "subtitle": "Nhiều loại lẩu",
+                        "image_url": IMAGE_GET_STARTED,
+                        "buttons": [
+                            {
+                                "type": "postback",
+                                "title": "Xem Chi Tiết",
+                                "payload": "VIEW_LAU",
+                            }
+                        ],
+                    },
+                    {
+                        "title": "Bia",
+                        "subtitle": "Awesome =))",
+                        "image_url": IMAGE_GET_STARTED,
+                        "buttons": [
+                            {
+                                "type": "postback",
+                                "title": "Xem Chi Tiết",
+                                "payload": "View_BEER",
+                            }
+                        ],
+                    },
+                    {
+                        "title": "Quay trở lại",
+                        "subtitle": "Quay trở lại Menu",
+                        "image_url": IMAGE_GET_STARTED,
+                        "buttons": [
+                            {
+                                "type": "postback",
+                                "title": "QUAY TRỞ LẠI",
+                                "payload": "BACK_TO_MENU",
+                            }
+                        ],
+                    }
+                ]
             }
         }
     }
+
     return response;
 }
 
@@ -537,6 +566,59 @@ let handleDetailViewBeer = async (sender_psid) => {
     })
 }
 
+let getImageRoomsTemplate = () => {
+    let response = {
+        "attachment": {
+            "type": "image",
+            "payload": {
+                "url": IMAGE_GET_STARTED,
+                "is_reusable": true
+            }
+        }
+    }
+}
+
+let getButtonRoomTemplate = () => {
+    let response = {
+        "attachment": {
+            "type": "template",
+            "payload": {
+                "template_type": "button",
+                "text": "Có thể phục vụ mọi mặt trận",
+                "buttons": [
+                    {
+                        "type": "postback",
+                        "title": "Menu",
+                        "payload": "MAIN_MENU",
+                    },
+                    {
+                        "type": "postback",
+                        "title": "QUAY TRỞ LẠI",
+                        "payload": "BACK_TO_MENU",
+                    },
+                ]
+            }
+        }
+    }
+}
+
+let handleShowDetailRooms = (sender_psid) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+
+            let response1 = getImageRoomsTemplate();
+            await callSendAPI(sender_psid, response1);
+
+            let response2 = getButtonRoomTemplate();
+            await callSendAPI(sender_psid, response2);
+
+            resolve('done');
+        } catch (e) {
+            reject(e);
+        }
+    })
+}
+
 module.exports = {
     handleGetStarted: handleGetStarted,
     handleSendMainMenu: handleSendMainMenu,
@@ -546,4 +628,5 @@ module.exports = {
     handleDetailViewAppetizers: handleDetailViewAppetizers,
     handleDetailViewLAU: handleDetailViewLAU,
     handleDetailViewBeer: handleDetailViewBeer,
+    handleShowDetailRooms: handleShowDetailRooms,
 }
