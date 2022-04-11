@@ -602,7 +602,7 @@ let getButtonRoomTemplate = () => {
     }
 }
 
-let handleShowDetailRooms = (sender_psid) => {
+let handleShowDetailRooms = async (sender_psid) => {
     return new Promise(async (resolve, reject) => {
         try {
 
