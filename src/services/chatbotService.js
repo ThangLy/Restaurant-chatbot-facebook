@@ -137,9 +137,11 @@ let getStartedTemplate = () => {
                             "payload": "MAIN_MENU",
                         },
                         {
-                            "type": "postback",
+                            "type": "web-url",
+                            "url": `${process.env.URL_WEB_VIEW_ORDER}`,
                             "title": "Đặt Bàn",
-                            "payload": "RESERVE_TABLE",
+                            "webview_height_ratio": "tall",
+                            "messenger_extensions": true // false: open the newtab
                         },
                         {
                             "type": "postback",
@@ -199,9 +201,11 @@ let getMainMenuTemplate = () => {
                         "image_url": IMAGE_GET_STARTED,
                         "buttons": [
                             {
-                                "type": "postback",
+                                "type": "web-url",
+                                "url": `${process.env.URL_WEB_VIEW_ORDER}`,
                                 "title": "Đặt Bàn",
-                                "payload": "RESERVE_TABLE",
+                                "webview_height_ratio": "tall",
+                                "messenger_extensions": true // false: open the newtab
                             }
                         ],
                     },
@@ -579,7 +583,7 @@ let getImageRoomsTemplate = () => {
     return response;
 }
 
-let getButtonRoomTemplate = () => {
+let getButtonRoomsTemplate = () => {
     let response = {
         "attachment": {
             "type": "template",
@@ -611,7 +615,7 @@ let handleShowDetailRooms = async (sender_psid) => {
             let response1 = getImageRoomsTemplate();
             await callSendAPI(sender_psid, response1);
 
-            let response2 = getButtonRoomTemplate();
+            let response2 = getButtonRoomsTemplate();
             await callSendAPI(sender_psid, response2);
 
             resolve('done');
