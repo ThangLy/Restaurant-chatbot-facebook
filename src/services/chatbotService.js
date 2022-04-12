@@ -635,4 +635,5 @@ module.exports = {
     handleDetailViewLAU: handleDetailViewLAU,
     handleDetailViewBeer: handleDetailViewBeer,
     handleShowDetailRooms: handleShowDetailRooms,
+    callSendAPI: callSendAPI,
 }
