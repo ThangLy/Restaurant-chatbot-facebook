@@ -18,7 +18,10 @@ window.extAsyncInit = function () {
         },
         function error(err) {
             // error
-            console.log('Lỗi đặt bàn Bot', err);
+            console.log('Lỗi đặt bàn Bot with MessengerExtensions', err);
+
+            $("#psid").val(senderId);
+            handleClickButtonReserveTable();
         }
     );
 };
