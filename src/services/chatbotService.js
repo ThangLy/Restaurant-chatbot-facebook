@@ -136,7 +136,13 @@ let getStartedTemplate = () => {
                             "title": "Menu",
                             "payload": "MAIN_MENU",
                         },
-
+                        {
+                            "type": "web_url",
+                            "url": `${process.env.URL_WEB_VIEW_ORDER}`,
+                            "title": "Đặt bàn",
+                            "webview_height_ratio": "tall",
+                            "messenger_extensions": true //false: open the webview in new tab
+                        },
                         {
                             "type": "postback",
                             "title": "Hướng dẫn sử dụng bot",
@@ -195,12 +201,12 @@ let getMainMenuTemplate = () => {
                         "image_url": IMAGE_GET_STARTED,
                         "buttons": [
                             {
-                                "type": "web-url",
+                                "type": "web_url",
                                 "url": `${process.env.URL_WEB_VIEW_ORDER}`,
-                                "title": "Đặt Bàn",
+                                "title": "Đặt bàn",
                                 "webview_height_ratio": "tall",
-                                "messenger_extensions": true // false: open the newtab
-                            }
+                                "messenger_extensions": true //false: open the webview in new tab
+                            },
                         ],
                     },
                     {
