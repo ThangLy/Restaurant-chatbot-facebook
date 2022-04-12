@@ -136,13 +136,7 @@ let getStartedTemplate = () => {
                             "title": "Menu",
                             "payload": "MAIN_MENU",
                         },
-                        {
-                            "type": "web-url",
-                            "url": `${process.env.URL_WEB_VIEW_ORDER}`,
-                            "title": "Đặt Bàn",
-                            "webview_height_ratio": "tall",
-                            "messenger_extensions": true // false: open the newtab
-                        },
+
                         {
                             "type": "postback",
                             "title": "Hướng dẫn sử dụng bot",
