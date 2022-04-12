@@ -286,9 +286,9 @@ let setupPersistentMenu = async (req, res) => {
 }
 
 let handleReserveTable = (req, res) => {
-  let senderID = request.Params.senderId;
+  let senderId = request.Params.senderId;
   return res.render("reserve-table.ejs", {
-    senderID: senderID
+    senderId: senderId
   });
 }
 
