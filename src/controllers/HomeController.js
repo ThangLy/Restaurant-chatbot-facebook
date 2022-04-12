@@ -286,7 +286,8 @@ let setupPersistentMenu = async (req, res) => {
 }
 
 let handleReserveTable = (req, res) => {
-  return res.render('/reserve-table.ejs');
+
+  return res.render("reserve-table.ejs");
 }
 
 module.exports = {
