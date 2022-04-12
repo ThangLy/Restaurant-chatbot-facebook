@@ -290,6 +290,38 @@ let handleReserveTable = (req, res) => {
   return res.render("reserve-table.ejs");
 }
 
+let handlePostReverseTable = async (req, res) => {
+  try {
+    let customerName = "";
+    if (req.body.customerName === "") {
+      customerName = "Để Trống";
+    } else customerName = req.body.customerName;
+
+    // I demo response with sample text
+    // you can check database for customer order's status
+
+    let response1 = {
+      "text": `---Thông tin khách hàng đặt bàn---
+        \nHọ và Tên: ${customerName}
+        \nĐịa chỉ email: ${req.body.email}
+        \nSố điện thoại: ${req.body.phoneNumber}
+        `
+    };
+
+    await chatbotService.callSendAPI(req.body.psid, response1);
+
+    return res.status(200).json({
+      message: "ok"
+    });
+
+  } catch (e) {
+    console.log('Lỗi post reserve-table', e)
+    return res.status(500).json({
+      message: 'Server error'
+    });
+  }
+}
+
 module.exports = {
   getHomePage: getHomePage,
   postWebhook: postWebhook,
@@ -297,4 +329,6 @@ module.exports = {
   setupProfile: setupProfile,
   setupPersistentMenu: setupPersistentMenu,
   handleReserveTable: handleReserveTable,
+  handlePostReverseTable: handlePostReverseTable,
+  callSendAPI: callSendAPI,
 }
