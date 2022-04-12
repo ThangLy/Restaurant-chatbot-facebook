@@ -105,7 +105,7 @@ let handleGetStarted = (sender_psid) => {
             let username = await getUserName(sender_psid);
             let response1 = { "text": `Xin chào mừng bạn ${username} đến với lẩu Thuận Phát.` }
 
-            let response2 = getStartedTemplate();
+            let response2 = getStartedTemplate(sender_psid);
 
             //send text message
             await callSendAPI(sender_psid, response1);
@@ -120,7 +120,7 @@ let handleGetStarted = (sender_psid) => {
     })
 }
 
-let getStartedTemplate = () => {
+let getStartedTemplate = (senderID) => {
     let response = {
         "attachment": {
             "type": "template",
@@ -138,7 +138,7 @@ let getStartedTemplate = () => {
                         },
                         {
                             "type": "web_url",
-                            "url": `${process.env.URL_WEB_VIEW_ORDER}`,
+                            "url": `${process.env.URL_WEB_VIEW_ORDER}/${senderID}`,
                             "title": "Đặt bàn",
                             "webview_height_ratio": "tall",
                             "messenger_extensions": true //false: open the webview in new tab
@@ -159,7 +159,7 @@ let getStartedTemplate = () => {
 let handleSendMainMenu = (sender_psid) => {
     return new Promise(async (resolve, reject) => {
         try {
-            let response = getMainMenuTemplate();
+            let response = getMainMenuTemplate(sender_psid);
 
             //send generic template message
             await callSendAPI(sender_psid, response);
@@ -171,7 +171,7 @@ let handleSendMainMenu = (sender_psid) => {
     })
 }
 
-let getMainMenuTemplate = () => {
+let getMainMenuTemplate = (senderID) => {
     let response = {
         "attachment": {
             "type": "template",
@@ -202,7 +202,7 @@ let getMainMenuTemplate = () => {
                         "buttons": [
                             {
                                 "type": "web_url",
-                                "url": `${process.env.URL_WEB_VIEW_ORDER}`,
+                                "url": `${process.env.URL_WEB_VIEW_ORDER}/${senderID}`,
                                 "title": "Đặt bàn",
                                 "webview_height_ratio": "tall",
                                 "messenger_extensions": true //false: open the webview in new tab
