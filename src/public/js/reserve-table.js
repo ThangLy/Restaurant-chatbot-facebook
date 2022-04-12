@@ -66,23 +66,29 @@ function handleClickButtonReserveTable() {
             //close webview
             MessengerExtensions.requestCloseBrowser(function success() {
                 // webview closed
+                callAjax();
             }, function error(err) {
                 // an error occurred
                 console.log(err);
+                callAjax();
             });
 
-            //send data to node.js server 
-            $.ajax({
-                url: `${window.location.origin}/reserve-table-ajax`,
-                method: "POST",
-                data: data,
-                success: function (data) {
-                    console.log(data);
-                },
-                error: function (error) {
-                    console.log(error);
-                }
-            })
+
         }
     });
+}
+
+function callAjax() {
+    //send data to node.js server 
+    $.ajax({
+        url: `${window.location.origin}/reserve-table-ajax`,
+        method: "POST",
+        data: data,
+        success: function (data) {
+            console.log(data);
+        },
+        error: function (error) {
+            console.log(error);
+        }
+    })
 }
