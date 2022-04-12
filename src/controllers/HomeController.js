@@ -330,5 +330,4 @@ module.exports = {
   setupPersistentMenu: setupPersistentMenu,
   handleReserveTable: handleReserveTable,
   handlePostReverseTable: handlePostReverseTable,
-  callSendAPI: callSendAPI,
 }
