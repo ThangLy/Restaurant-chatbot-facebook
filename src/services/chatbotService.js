@@ -4,7 +4,11 @@ require('dotenv').config();
 
 const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN;
 
-const IMAGE_GET_STARTED = 'https://phongvu.vn/cong-nghe/wp-content/uploads/2018/07/hinh-nen-laptop-dep-danh-cho-man-hinh-ips-1.jpg'
+const IMAGE_GET_STARTED = 'https://cdn.discordapp.com/attachments/601413306355417088/979764015452528660/Menu.PNG'
+const IMAGE_GET_DRINK = 'https://cdn.discordapp.com/attachments/601413306355417088/979765093996838982/GiaiKhat.PNG'
+const IMAGE_GET_LAU = 'https://cdn.discordapp.com/attachments/601413306355417088/979765094265270352/Lau.PNG'
+const IMAGE_GET_Nuong = 'https://cdn.discordapp.com/attachments/601413306355417088/979765094550474782/Nuong.PNG'
+const IMAGE_GET_XAO = 'https://cdn.discordapp.com/attachments/601413306355417088/979765094768603156/Xao.PNG'
 let callSendAPI = async (sender_psid, response) => {
     // Construct the message body
     let request_body = {
@@ -251,9 +255,9 @@ let getMainLunchTemplate = () => {
                 "template_type": "generic",
                 "elements": [
                     {
-                        "title": "Món Khai Vị",
+                        "title": "Món Nướng",
                         "subtitle": "Có nhiều món tráng miệng hấp dẫn",
-                        "image_url": IMAGE_GET_STARTED,
+                        "image_url": IMAGE_GET_NUONG,
                         "buttons": [
                             {
                                 "type": "postback",
@@ -265,7 +269,7 @@ let getMainLunchTemplate = () => {
                     {
                         "title": "Lẩu",
                         "subtitle": "Nhiều loại lẩu",
-                        "image_url": IMAGE_GET_STARTED,
+                        "image_url": IMAGE_GET_LAU,
                         "buttons": [
                             {
                                 "type": "postback",
@@ -275,9 +279,21 @@ let getMainLunchTemplate = () => {
                         ],
                     },
                     {
-                        "title": "Bia",
+                        "title": "Món Xào",
                         "subtitle": "Awesome =))",
-                        "image_url": IMAGE_GET_STARTED,
+                        "image_url": IMAGE_GET_XAO,
+                        "buttons": [
+                            {
+                                "type": "postback",
+                                "title": "Xem Chi Tiết",
+                                "payload": "View_BEER",
+                            }
+                        ],
+                    },
+                    {
+                        "title": "Giải khát",
+                        "subtitle": "Awesome =))",
+                        "image_url": IMAGE_GET_DRINK,
                         "buttons": [
                             {
                                 "type": "postback",
