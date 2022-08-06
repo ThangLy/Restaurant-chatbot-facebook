@@ -1,3 +1,3 @@
-# Restaurant-chatbot-facebook
+# Restaurant-chatbot-facebook-messenger
 
 https://chatbot-thangly.herokuapp.com/
